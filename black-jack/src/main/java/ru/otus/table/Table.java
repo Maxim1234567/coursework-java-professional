@@ -23,18 +23,12 @@ public class Table {
         this.players.add(player);
     }
 
-    public void seats(List<Player> players) {
-        for (Player player: players) {
-            seat(player);
-        }
-    }
-
     public Dealer callDealer() {
         return dealer;
     }
 
-    public Player callPlayer(int index) {
-        return players.get(index);
+    public List<Player> callPlayers() {
+        return players;
     }
 
     public int countPlayers() {

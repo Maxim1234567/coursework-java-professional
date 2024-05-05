@@ -14,4 +14,8 @@ public interface Player {
 
     List<Card> giveCards();
 
+    int getScore();
+
+    String getName();
+
 }

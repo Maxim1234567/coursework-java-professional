@@ -7,13 +7,11 @@ import ru.otus.player.Say;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static ru.otus.Constants.TWENTY_ONE;
 
-public class PlayerComputer implements Player {
-
-    private static final int LIMIT = 17;
-
+public class PlayerReal implements Player {
 
     private final List<Card> cards;
 
@@ -21,7 +19,7 @@ public class PlayerComputer implements Player {
 
     private final String name;
 
-    public PlayerComputer(
+    public PlayerReal(
             String name,
             CardScores cardScores
     ) {
@@ -39,23 +37,19 @@ public class PlayerComputer implements Player {
 
     @Override
     public Say say() {
-        if (getScore() >= LIMIT) {
-            System.out.println("Имя " + name + " говорит " + Say.PASS);
-            return Say.PASS;
-        }
+        System.out.print("Ваши очки " + getScore() + ". Введите PASS/MORE: ");
+        Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Имя " + name + " говорит " + Say.MORE);
+        String say = scanner.nextLine();
+
+        if (say.equals("PASS"))
+            return Say.PASS;
+
         return Say.MORE;
     }
 
     @Override
     public boolean isBust() {
-        if (getScore() > TWENTY_ONE) {
-            System.out.println("Имя " + name + " перебор");
-        } else {
-            System.out.println("Имя " + name + " нет перебора");
-        }
-
         return getScore() > TWENTY_ONE;
     }
 
