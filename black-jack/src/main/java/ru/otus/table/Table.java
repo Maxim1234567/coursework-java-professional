@@ -13,8 +13,10 @@ public class Table {
     private final List<Player> players;
 
 
-    public Table() {
-        this.dealer = new DealerImpl();
+    public Table(
+            Dealer dealer
+    ) {
+        this.dealer = dealer;
         this.players = new ArrayList<>();
     }
 

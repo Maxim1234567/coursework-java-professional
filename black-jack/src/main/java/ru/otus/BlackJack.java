@@ -5,6 +5,7 @@ import ru.otus.card.impl.CardDeckImpl;
 import ru.otus.card.scores.CardScores;
 import ru.otus.card.scores.impl.CardScoresImpl;
 import ru.otus.dealer.Dealer;
+import ru.otus.dealer.impl.DealerImpl;
 import ru.otus.player.Player;
 import ru.otus.player.impl.PlayerComputer;
 import ru.otus.player.impl.PlayerReal;
@@ -95,12 +96,14 @@ public class BlackJack {
 
         CardScores cardScores = new CardScoresImpl();
 
+        Dealer dealer = new DealerImpl();
+
         Player player1 = new PlayerReal("Maxim", cardScores);
         Player computer2 = new PlayerComputer("computer2", cardScores);
         Player computer3 = new PlayerComputer("computer3", cardScores);
         Player computer4 = new PlayerComputer("computer4", cardScores);
 
-        Table table = new Table();
+        Table table = new Table(dealer);
 
         table.seat(player1);
         table.seat(computer2);
