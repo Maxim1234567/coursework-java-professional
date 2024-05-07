@@ -2,6 +2,7 @@ package ru.otus.player.impl;
 
 import ru.otus.card.Card;
 import ru.otus.card.scores.CardScores;
+import ru.otus.facade.FacadeModel;
 import ru.otus.player.Player;
 import ru.otus.player.Say;
 
@@ -11,7 +12,7 @@ import java.util.Scanner;
 
 import static ru.otus.Constants.TWENTY_ONE;
 
-public class PlayerReal implements Player {
+public class PlayerRealConsole implements Player {
 
     private final List<Card> cards;
 
@@ -19,7 +20,7 @@ public class PlayerReal implements Player {
 
     private final String name;
 
-    public PlayerReal(
+    public PlayerRealConsole(
             String name,
             CardScores cardScores
     ) {
@@ -36,7 +37,7 @@ public class PlayerReal implements Player {
     }
 
     @Override
-    public Say say() {
+    public Say say(FacadeModel facadeModel) {
         System.out.print("Ваши очки " + getScore() + ". Введите PASS/MORE: ");
         Scanner scanner = new Scanner(System.in);
 
@@ -54,7 +55,7 @@ public class PlayerReal implements Player {
     }
 
     @Override
-    public List<Card> giveCards() {
+    public List<Card> foldCards() {
         List<Card> throwCards = new ArrayList<>();
 
         for (int i = 0; i < cards.size(); i++) {

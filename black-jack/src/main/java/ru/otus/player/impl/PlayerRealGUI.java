@@ -11,10 +11,7 @@ import java.util.List;
 
 import static ru.otus.Constants.TWENTY_ONE;
 
-public class PlayerComputer implements Player {
-
-    private static final int LIMIT = 17;
-
+public class PlayerRealGUI implements Player {
 
     private final List<Card> cards;
 
@@ -22,7 +19,7 @@ public class PlayerComputer implements Player {
 
     private final String name;
 
-    public PlayerComputer(
+    public PlayerRealGUI(
             String name,
             CardScores cardScores
     ) {
@@ -38,10 +35,7 @@ public class PlayerComputer implements Player {
 
     @Override
     public Say say(FacadeModel facadeModel) {
-        if (getScore() >= LIMIT) {
-            return Say.PASS;
-        }
-        return Say.MORE;
+        return facadeModel.whoSay(name);
     }
 
     @Override
