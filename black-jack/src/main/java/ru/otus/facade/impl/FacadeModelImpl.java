@@ -5,12 +5,15 @@ import ru.otus.facade.listener.CardListener;
 import ru.otus.facade.listener.PlayerListener;
 import ru.otus.facade.listener.SayListener;
 import ru.otus.facade.listener.ScoredListener;
+import ru.otus.facade.listener.SitListener;
 import ru.otus.facade.listener.StatusListener;
 import ru.otus.player.Say;
 
 public class FacadeModelImpl implements FacadeModel {
 
     private volatile Say say;
+
+    private SitListener sitListener;
 
     private CardListener cardListener;
 
@@ -66,6 +69,11 @@ public class FacadeModelImpl implements FacadeModel {
     }
 
     @Override
+    public void sitPlayerAtTable(String name) {
+        this.sitListener.sitPlayerAtTable(name);
+    }
+
+    @Override
     public void movePlayer(String name) {
         this.playerListener.playerMove(name);
     }
@@ -88,5 +96,10 @@ public class FacadeModelImpl implements FacadeModel {
     @Override
     public void addPlayerListener(PlayerListener playerListener) {
         this.playerListener = playerListener;
+    }
+
+    @Override
+    public void addSitListener(SitListener sitListener) {
+        this.sitListener = sitListener;
     }
 }

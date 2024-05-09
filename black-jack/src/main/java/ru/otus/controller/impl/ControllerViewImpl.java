@@ -1,10 +1,12 @@
 package ru.otus.controller.impl;
 
 import ru.otus.BlackJack;
+import ru.otus.BlackJackLocal;
 import ru.otus.controller.ControllerView;
 import ru.otus.facade.FacadeModel;
 import ru.otus.facade.listener.CardListener;
 import ru.otus.facade.listener.SayListener;
+import ru.otus.facade.listener.SitListener;
 import ru.otus.facade.listener.StatusListener;
 import ru.otus.gui.CardComponent;
 import ru.otus.gui.PlayerComponent;
@@ -72,6 +74,11 @@ public class ControllerViewImpl implements ControllerView {
     @Override
     public void addPlayerComputer(String name) {
         blackJack.sitAtTableComputer(name);
+    }
+
+    @Override
+    public void addSitListener(SitListener sitListener) {
+        facadeModel.addSitListener(sitListener);
     }
 
     @Override

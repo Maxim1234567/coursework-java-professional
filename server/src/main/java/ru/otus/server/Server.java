@@ -76,17 +76,17 @@ public class Server {
     public synchronized void broadcastMessage(Action a) {
         Card card = null;
 
-        if (a.state() == State.MOVE && Objects.nonNull(a.say())) {
-            if (a.say() == Say.MORE) {
+        if (a.getState() == State.TAKE && Objects.nonNull(a.getSay())) {
+            if (a.getSay() == Say.MORE) {
                 card = cardDeck.give();
             }
         }
 
         Action action = new Action(
-                a.player(),
-                a.say(),
-                a.message(),
-                a.state(),
+                a.getPlayer(),
+                a.getSay(),
+                a.getMessage(),
+                a.getState(),
                 card
         );
 

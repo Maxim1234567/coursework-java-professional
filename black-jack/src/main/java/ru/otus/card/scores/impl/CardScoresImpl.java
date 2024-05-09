@@ -10,7 +10,7 @@ public class CardScoresImpl implements CardScores {
     @Override
     public int score(List<Card> cards) {
         return cards.stream()
-                .map(Card::suit)
+                .map(Card::getSuit)
                 .mapToInt(Suit::getValue)
                 .sum();
     }

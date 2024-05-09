@@ -9,7 +9,7 @@ public class CardServiceImpl implements CardService {
     public String getPathImage(Card card) {
         String prefix = "/card/";
         String postfix = ".png";
-        return prefix + card.cardValue().name() + "_" + card.suit().name() + postfix;
+        return prefix + card.getCardValue().name() + "_" + card.getSuit().name() + postfix;
     }
 
 }

@@ -13,6 +13,7 @@ dependencies {
     implementation ("org.projectlombok:lombok")
     annotationProcessor ("org.projectlombok:lombok")
 
+    implementation("com.fasterxml.jackson.core:jackson-core:2.17.1")
     implementation("com.fasterxml.jackson.core:jackson-databind:2.17.1")
 }
 

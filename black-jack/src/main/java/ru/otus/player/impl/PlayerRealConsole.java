@@ -32,7 +32,7 @@ public class PlayerRealConsole implements Player {
     public void takeCard(Card card) {
         cards.add(card);
 
-        System.out.println("Имя " + name + " получает карту " + card.suit() + " " + card.cardValue() + " очки " + getScore());
+        System.out.println("Имя " + name + " получает карту " + card.getSuit() + " " + card.getCardValue() + " очки " + getScore());
     }
 
     @Override

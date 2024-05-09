@@ -1,59 +1,39 @@
-package ru.otus.handler;
+package ru.otus.card.network;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import ru.otus.model.Action;
-import ru.otus.server.Server;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
 
-public class PlayerHandler {
-    private Server server;
+public class Network {
 
     private Socket socket;
 
-    private String name;
-
     private DataInputStream in;
-
-    private ObjectMapper mapper;
 
     private DataOutputStream out;
 
-    public PlayerHandler(Server server, Socket socket) {
-        this.server = server;
-        this.socket = socket;
-        this.mapper = new ObjectMapper();
+    private ObjectMapper mapper;
+
+    public Network(
+            String host,
+            int port
+    ) {
         try {
+            this.socket = new Socket(host, port);
+            this.mapper = new ObjectMapper();
             this.in = new DataInputStream(socket.getInputStream());
             this.out = new DataOutputStream(socket.getOutputStream());
-            new Thread(this::communicate).start();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    private void communicate() {
-        while (true) {
-            Action action = read();
-
-            switch (action.getState()) {
-                case CONNECT -> {
-                    name = action.getPlayer();
-                    server.subscribe(this);
-                    break;
-                }
-                case TAKE -> {
-                    server.broadcastMessage(action);
-                }
-            }
-        }
-    }
-
-    private Action read() {
+    public Action read() {
         try {
             return convert(in.readUTF());
         } catch (IOException e) {
@@ -79,15 +59,10 @@ public class PlayerHandler {
 
     private Action convert(String message) {
         try {
-            System.out.println(message);
             return mapper.readValue(message, Action.class);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public String getName() {
-        return name;
     }
 
 }

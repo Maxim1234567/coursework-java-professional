@@ -4,6 +4,7 @@ import ru.otus.facade.listener.CardListener;
 import ru.otus.facade.listener.PlayerListener;
 import ru.otus.facade.listener.SayListener;
 import ru.otus.facade.listener.ScoredListener;
+import ru.otus.facade.listener.SitListener;
 import ru.otus.facade.listener.StatusListener;
 import ru.otus.player.Say;
 
@@ -21,6 +22,8 @@ public interface FacadeModel {
 
     void updateStatus(String status);
 
+    void sitPlayerAtTable(String name);
+
     void movePlayer(String name);
 
     void addCardListener(CardListener cardListener);
@@ -30,5 +33,7 @@ public interface FacadeModel {
     void addStatusListener(StatusListener statusListener);
 
     void addPlayerListener(PlayerListener playerListener);
+
+    void addSitListener(SitListener sitListener);
 
 }

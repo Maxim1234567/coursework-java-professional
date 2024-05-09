@@ -1,5 +1,5 @@
 package ru.otus.model;
 
 public enum State {
-    CONNECT, WAIT, MOVE, START, END
+    CONNECT, WAIT, TAKE, START, END
 }
