@@ -13,6 +13,8 @@ import ru.otus.facade.FacadeModel;
 import ru.otus.facade.impl.FacadeModelImpl;
 import ru.otus.player.Player;
 import ru.otus.player.impl.PlayerComputer;
+import ru.otus.player.impl.PlayerNetworkGet;
+import ru.otus.player.impl.PlayerNetworkSend;
 import ru.otus.player.impl.PlayerRealConsole;
 import ru.otus.player.impl.PlayerRealGUI;
 import ru.otus.service.DisplayPlayer;
@@ -51,7 +53,7 @@ public class BlackJack {
     }
 
     public void sitAtTable(String name) {
-        table.seat(new PlayerRealGUI(name, cardScores));
+        table.seat(new PlayerRealGUI(name, cardScores, facadeModel));
     }
 
     public void sitAtTableComputer(String name) {
@@ -88,7 +90,7 @@ public class BlackJack {
                 //если не перебор, игрок говорит
                 if (!player.isBust()) {
                     facadeModel.movePlayer(player.getName());
-                    switch (player.say(facadeModel)) {
+                    switch (player.say()) {
                         case MORE -> {
                             Card card = dealer.takeCardDeckAndGivePlayer(cardDeck);
                             player.takeCard(card);

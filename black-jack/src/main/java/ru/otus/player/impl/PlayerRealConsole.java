@@ -2,7 +2,6 @@ package ru.otus.player.impl;
 
 import ru.otus.card.Card;
 import ru.otus.card.scores.CardScores;
-import ru.otus.facade.FacadeModel;
 import ru.otus.player.Player;
 import ru.otus.player.Say;
 
@@ -37,7 +36,7 @@ public class PlayerRealConsole implements Player {
     }
 
     @Override
-    public Say say(FacadeModel facadeModel) {
+    public Say say() {
         System.out.print("Ваши очки " + getScore() + ". Введите PASS/MORE: ");
         Scanner scanner = new Scanner(System.in);
 

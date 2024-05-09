@@ -19,13 +19,17 @@ public class PlayerRealGUI implements Player {
 
     private final String name;
 
+    private final FacadeModel facadeModel;
+
     public PlayerRealGUI(
             String name,
-            CardScores cardScores
+            CardScores cardScores,
+            FacadeModel facadeModel
     ) {
         this.cards = new ArrayList<>();
         this.name = name;
         this.cardScores = cardScores;
+        this.facadeModel = facadeModel;
     }
 
     @Override
@@ -34,7 +38,7 @@ public class PlayerRealGUI implements Player {
     }
 
     @Override
-    public Say say(FacadeModel facadeModel) {
+    public Say say() {
         return facadeModel.whoSay(name);
     }
 

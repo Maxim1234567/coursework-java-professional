@@ -37,11 +37,20 @@ public class PlayFrame {
         ImageIcon avatar = loadImage("/player.png", 60, 60);
         ImageIcon shirt = loadImage("/card/SHIRT.png", 100, 100);
 
-        PlayerComponent playerReal = new PlayerComponent("Maxim", avatar, false, controllerView.addPlayerListener("Maxim"));
-        PlayerComponent playerReal2 = new PlayerComponent("Maxim2", avatar, true, controllerView.addPlayerListener("Maxim2"));
+//        PlayerComponent playerReal = new PlayerComponent("Maxim", avatar, false, controllerView.addPlayerListener("Maxim"));
+//        PlayerComponent playerReal2 = new PlayerComputer("Maxim2", avatar, true, null);
 
-        controllerView.addPlayer("Maxim");
-        controllerView.addPlayer("Maxim2");
+        PlayerComponent playerReal = new PlayerComputer("Maxim", avatar, true, null);
+        PlayerComponent playerReal2 = new PlayerComponent("Maxim2", avatar, false, controllerView.addPlayerListener("Maxim2"));
+
+//        controllerView.addPlayer("Maxim");
+//        controllerView.addPlayer("Maxim2");
+
+//        controllerView.addPlayerNetworkSend("Maxim");
+//        controllerView.addPlayerNetworkGet("Maxim2");
+
+        controllerView.addPlayerNetworkGet("Maxim");
+        controllerView.addPlayerNetworkSend("Maxim2");
 
         controllerView.putPlayerComponent(playerReal);
         controllerView.putPlayerComponent(playerReal2);
@@ -61,8 +70,12 @@ public class PlayFrame {
 
         frame.getContentPane().setBackground(Utils.GREEN);
 
-        frame.getContentPane().add(BorderLayout.SOUTH, playerReal);
-        frame.getContentPane().add(BorderLayout.NORTH, playerReal2);
+//        frame.getContentPane().add(BorderLayout.SOUTH, playerReal);
+//        frame.getContentPane().add(BorderLayout.NORTH, playerReal2);
+
+        frame.getContentPane().add(BorderLayout.NORTH, playerReal);
+        frame.getContentPane().add(BorderLayout.SOUTH, playerReal2);
+
         frame.getContentPane().add(BorderLayout.EAST, cardShirt);
         frame.getContentPane().add(BorderLayout.CENTER, jStatus);
 

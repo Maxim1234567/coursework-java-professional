@@ -9,7 +9,7 @@ public interface Player {
 
     void takeCard(Card card);
 
-    Say say(FacadeModel facadeModel);
+    Say say();
 
     boolean isBust();
 
