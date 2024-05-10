@@ -49,14 +49,8 @@ public class PlayerComputer implements Player {
     }
 
     @Override
-    public List<Card> foldCards() {
-        List<Card> throwCards = new ArrayList<>();
-
-        for (int i = 0; i < cards.size(); i++) {
-            throwCards.add(cards.removeFirst());
-        }
-
-        return throwCards;
+    public void foldCards() {
+        cards.clear();
     }
 
     @Override

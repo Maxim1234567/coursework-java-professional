@@ -1,6 +1,8 @@
 package ru.otus.facade;
 
 import ru.otus.facade.listener.CardListener;
+import ru.otus.facade.listener.EnableListener;
+import ru.otus.facade.listener.EndGameListener;
 import ru.otus.facade.listener.PlayerListener;
 import ru.otus.facade.listener.SayListener;
 import ru.otus.facade.listener.ScoredListener;
@@ -11,6 +13,10 @@ import ru.otus.player.Say;
 public interface FacadeModel {
 
     SayListener addSayListener(String name);
+
+    void addSayListener(SayListener sayListener);
+
+    SayListener sayListener();
 
     void takeCard(String name, String card);
 
@@ -35,5 +41,13 @@ public interface FacadeModel {
     void addPlayerListener(PlayerListener playerListener);
 
     void addSitListener(SitListener sitListener);
+
+    void addEnableListener(EnableListener enableListener);
+
+    void enabled(String name, boolean enable);
+
+    void addEndGameListener(EndGameListener endGameListener);
+
+    void end();
 
 }

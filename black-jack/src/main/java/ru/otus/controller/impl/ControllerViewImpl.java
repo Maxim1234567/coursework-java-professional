@@ -5,6 +5,8 @@ import ru.otus.BlackJackLocal;
 import ru.otus.controller.ControllerView;
 import ru.otus.facade.FacadeModel;
 import ru.otus.facade.listener.CardListener;
+import ru.otus.facade.listener.EnableListener;
+import ru.otus.facade.listener.EndGameListener;
 import ru.otus.facade.listener.SayListener;
 import ru.otus.facade.listener.SitListener;
 import ru.otus.facade.listener.StatusListener;
@@ -67,6 +69,11 @@ public class ControllerViewImpl implements ControllerView {
     }
 
     @Override
+    public SayListener addPlayerListener() {
+        return facadeModel.sayListener();
+    }
+
+    @Override
     public void addPlayer(String name) {
         blackJack.sitAtTable(name);
     }
@@ -92,7 +99,17 @@ public class ControllerViewImpl implements ControllerView {
     }
 
     @Override
+    public void addEnableListener(EnableListener enableListener) {
+        facadeModel.addEnableListener(enableListener);
+    }
+
+    @Override
     public void play() {
         blackJack.play();
+    }
+
+    @Override
+    public void addEndGameListener(EndGameListener endGameListener) {
+        facadeModel.addEndGameListener(endGameListener);
     }
 }

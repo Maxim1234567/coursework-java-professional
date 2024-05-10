@@ -2,6 +2,8 @@ package ru.otus.facade.impl;
 
 import ru.otus.facade.FacadeModel;
 import ru.otus.facade.listener.CardListener;
+import ru.otus.facade.listener.EnableListener;
+import ru.otus.facade.listener.EndGameListener;
 import ru.otus.facade.listener.PlayerListener;
 import ru.otus.facade.listener.SayListener;
 import ru.otus.facade.listener.ScoredListener;
@@ -13,6 +15,8 @@ public class FacadeModelImpl implements FacadeModel {
 
     private volatile Say say;
 
+    private SayListener sayListener;
+
     private SitListener sitListener;
 
     private CardListener cardListener;
@@ -22,6 +26,10 @@ public class FacadeModelImpl implements FacadeModel {
     private StatusListener statusListener;
 
     private PlayerListener playerListener;
+
+    private EnableListener enableListener;
+
+    private EndGameListener endGameListener;
 
     @Override
     public SayListener addSayListener(String name) {
@@ -36,6 +44,16 @@ public class FacadeModelImpl implements FacadeModel {
                 say = Say.PASS;
             }
         };
+    }
+
+    @Override
+    public void addSayListener(SayListener sayListener) {
+        this.sayListener = sayListener;
+    }
+
+    @Override
+    public SayListener sayListener() {
+        return sayListener;
     }
 
     @Override
@@ -101,5 +119,25 @@ public class FacadeModelImpl implements FacadeModel {
     @Override
     public void addSitListener(SitListener sitListener) {
         this.sitListener = sitListener;
+    }
+
+    @Override
+    public void addEnableListener(EnableListener enableListener) {
+        this.enableListener = enableListener;
+    }
+
+    @Override
+    public void enabled(String name, boolean enable) {
+        this.enableListener.enabled(name, enable);
+    }
+
+    @Override
+    public void addEndGameListener(EndGameListener endGameListener) {
+        this.endGameListener = endGameListener;
+    }
+
+    @Override
+    public void end() {
+        endGameListener.end();
     }
 }

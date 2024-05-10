@@ -1,20 +1,23 @@
-package ru.otus.model;
+package ru.otus.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.otus.card.Card;
-import ru.otus.player.Say;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Action {
-    private String player;
-    private Say say;
-    private String message;
+public class Dto {
+    private String name;
+
     private State state;
+
+    private Boolean isSay;
+
     private Card card;
+
+    private String message;
 }

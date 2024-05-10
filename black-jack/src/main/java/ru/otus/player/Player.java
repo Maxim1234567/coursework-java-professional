@@ -13,7 +13,7 @@ public interface Player {
 
     boolean isBust();
 
-    List<Card> foldCards();
+    void foldCards();
 
     int getScore();
 

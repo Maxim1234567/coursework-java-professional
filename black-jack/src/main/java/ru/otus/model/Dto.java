@@ -4,16 +4,22 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 import ru.otus.card.Card;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Action {
-    private String player;
-    private Say say;
-    private String message;
+@ToString
+public class Dto {
+    private String name;
+
     private State state;
+
+    private Boolean isSay;
+
     private Card card;
+
+    private String message;
 }

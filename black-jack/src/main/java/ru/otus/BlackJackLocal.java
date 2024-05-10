@@ -5,6 +5,7 @@ import ru.otus.card.CardDeck;
 import ru.otus.card.CardService;
 import ru.otus.card.impl.CardDeckImpl;
 import ru.otus.card.impl.CardServiceImpl;
+import ru.otus.card.network.Network;
 import ru.otus.card.scores.CardScores;
 import ru.otus.card.scores.impl.CardScoresImpl;
 import ru.otus.dealer.Dealer;
@@ -130,6 +131,11 @@ public class BlackJackLocal implements BlackJack {
             player.foldCards();
             facadeModel.foldCards(player.getName());
         }
+    }
+
+    @Override
+    public void setNetwork(Network network) {
+
     }
 
     public static void main(String[] args) {
